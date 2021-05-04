@@ -3,6 +3,7 @@ import morgan from 'morgan';
 import cors from 'cors';
 import path from 'path';
 import './database';
+import productoRoutes from './routes/producto.routes'
 
 // settings
 // creo una instancia de express;
@@ -25,7 +26,8 @@ app.use(express.urlencoded({extended:true}));
 app.use(express.static(path.join(__dirname,'../public')))
 
 // crear una ruta
-app.get('/',(req,res)=>{
-    res.send('Hola desde el servidor de backend');
-});
+// app.get('/',(req,res)=>{
+//     res.send('Hola desde el servidor de backend');
+// });
 
+app.use('/api/cafeteria',productoRoutes);
