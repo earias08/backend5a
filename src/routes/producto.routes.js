@@ -8,7 +8,7 @@ const router = Router();
 // router.route('/').get(funcion con logica);
 router
   .route("/")
-  .get(cafeteriaCtrl.getPrueba)
+  .get(cafeteriaCtrl.listarProductos)
   .post(cafeteriaCtrl.crearProducto);
 
 export default router;
