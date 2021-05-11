@@ -46,4 +46,48 @@ cafeteriaCtrl.listarProductos = async(req, res)=>{
     }
 }
 
+cafeteriaCtrl.eliminarProducto = async (req, res)=>{
+    try{
+        console.log(req.params.id)
+        await Producto.findByIdAndDelete(req.params.id)
+        res.status(200).json({
+            mensaje:'el producto fue eliminado'
+        })
+    }catch(error){
+        console.log(error)
+        res.status(500).json({
+            mensaje: 'no se pudo eliminar el producto'
+        })
+    }
+}
+
+cafeteriaCtrl.obtenerProducto = async(req, res)=>{
+    try{
+        // console.log(req.params.id);
+        const productoBuscado = await Producto.findById(req.params.id);
+        res.status(200).json(productoBuscado)
+    }catch(error){
+        console.log(error);
+        res.status(404).json({
+            mensaje: 'el producto solicitado no fue encontrado'
+        })
+    }
+}
+
+cafeteriaCtrl.editarProducto = async (req,res) =>{
+    try{
+        console.log(req.body);
+        // validar
+       await Producto.findByIdAndUpdate(req.params.id,req.body);
+        res.status(200).json({
+            mensaje: 'el producto fue modificado'
+        })
+    }catch(error){
+        console.log(error);
+        res.status(404).json({
+            mensaje: 'no se pudo actualizar el producto'
+        });
+    }
+}
+
 export default cafeteriaCtrl;

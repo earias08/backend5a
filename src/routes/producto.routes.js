@@ -11,4 +11,9 @@ router
   .get(cafeteriaCtrl.listarProductos)
   .post(cafeteriaCtrl.crearProducto);
 
+router.route('/:id')
+.delete(cafeteriaCtrl.eliminarProducto)
+.get(cafeteriaCtrl.obtenerProducto)
+.put(cafeteriaCtrl.editarProducto);
+
 export default router;
